@@ -13,6 +13,10 @@ RUN apt-get update && \
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
-RUN composer create-project "laravel/laravel=9.*" /data
-
 WORKDIR /data
+
+RUN chmod -R 777 storage bootstrap/cache && \
+  composer install && \
+  cp .env.example .env && \
+  php artisan key:generate
+
