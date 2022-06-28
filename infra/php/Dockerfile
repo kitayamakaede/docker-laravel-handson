@@ -14,9 +14,3 @@ RUN apt-get update && \
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /data
-
-RUN chmod -R 777 storage bootstrap/cache && \
-  composer install && \
-  cp .env.example .env && \
-  php artisan key:generate
-
